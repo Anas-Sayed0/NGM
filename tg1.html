@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TG 1 - Learning Resources | Ngmsoft</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Additional styles for TG1 page */
+      body {
+        padding-top: 80px;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+      }
+
+      .tg1-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      .tg1-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+        width: 100%;
+      }
+
+      .tg1-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .tg1-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 0 auto 3rem;
+        max-width: 1200px;
+      }
+
+      .learning-card {
+        background: var(--bg-white);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--text-dark);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .learning-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .learning-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .learning-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
+      }
+
+      .card-number {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .learning-card:hover .card-number {
+        transform: scale(1.1) rotate(10deg);
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        border-radius: 1rem;
+        color: white;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .learning-card:hover .card-icon {
+        transform: scale(1.1);
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+        color: var(--text-dark);
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .learning-card:hover .card-title {
+        color: var(--primary-color);
+      }
+
+      /* Navbar overrides for TG1 page */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: var(--bg-white);
+        box-shadow: var(--shadow-md);
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-md);
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .back-button svg {
+        transition: transform 0.3s ease;
+      }
+
+      .back-button:hover svg {
+        transform: translateX(-3px);
+      }
+
+      .navbar-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 1024px) {
+        .cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding-top: 70px;
+        }
+
+        .tg1-title {
+          font-size: 2.5rem;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .tg1-container {
+          padding: 2rem 1rem;
+        }
+
+        .navbar-container {
+          padding: 1rem;
+        }
+
+        .navbar-logo {
+          font-size: 1.25rem;
+        }
+
+        .back-button {
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="back-button">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          العودة للرئيسية
+        </a>
+        <div class="navbar-logo">
+          <span>Ngmsoft</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="tg1-container">
+        <div class="tg1-header">
+          <h1 class="tg1-title">TG 1</h1>
+          <p class="tg1-subtitle">دروس تعليمية شاملة للبرنامج</p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <a href="#" class="learning-card" data-card="1">
+            <span class="card-number">1</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">فكرة عامة عن البرنامج</h3>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="#" class="learning-card" data-card="2">
+            <span class="card-number">2</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">شرح تنزيل البرنامج</h3>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="#" class="learning-card" data-card="3">
+            <span class="card-number">3</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">التكويد والبيانات الاساسية</h3>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="#" class="learning-card" data-card="4">
+            <span class="card-number">4</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">الفواتير النقدية</h3>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="#" class="learning-card" data-card="5">
+            <span class="card-number">5</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">الفواتير والحركات الاجلة</h3>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="#" class="learning-card" data-card="6">
+            <span class="card-number">6</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">الباركود والمسلسلات</h3>
+          </a>
+
+          <!-- Card 7 -->
+          <a href="#" class="learning-card" data-card="7">
+            <span class="card-number">7</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path
+                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="card-title">التقارير نظرة عامة</h3>
+          </a>
+
+          <!-- Card 8 -->
+          <a href="#" class="learning-card" data-card="8">
+            <span class="card-number">8</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">اقفال اليوم</h3>
+          </a>
+
+          <!-- Card 9 -->
+          <a href="#" class="learning-card" data-card="9">
+            <span class="card-number">9</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">كيفية البدأ في العمل على البرنامج</h3>
+          </a>
+
+          <!-- Card 10 -->
+          <a href="#" class="learning-card" data-card="10">
+            <span class="card-number">10</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="card-title">
+              استيراد الاكواد وبداية المدة والتصفير لقاعدة البيانات
+            </h3>
+          </a>
+
+          <!-- Card 11 -->
+          <a href="#" class="learning-card" data-card="11">
+            <span class="card-number">11</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">مجموعات الاسعار</h3>
+          </a>
+
+          <!-- Card 12 -->
+          <a href="#" class="learning-card" data-card="12">
+            <span class="card-number">12</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title">اختصارات البرنامج</h3>
+          </a>
+
+          <!-- Card 13 -->
+          <a href="#" class="learning-card" data-card="13">
+            <span class="card-number">13</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M12 1v6m0 6v6m-6-6h6m6 0h-6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M19.78 4.22l-4.24 4.24m-7.08 7.08l-4.24 4.24"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="card-title">الفرق بين البرنامجين TG & TBS</h3>
+          </a>
+
+          <!-- Card 14 -->
+          <a href="#" class="learning-card" data-card="14">
+            <span class="card-number">14</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3 class="card-title">
+              الفرق بين البرنامج الحديث والاصدارات القديمة
+            </h3>
+          </a>
+
+          <!-- Card 15 -->
+          <a href="#" class="learning-card" data-card="15">
+            <span class="card-number">15</span>
+            <div class="card-icon">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="card-title">المستخدمين</h3>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Ngmsoft. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

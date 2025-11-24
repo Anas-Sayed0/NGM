@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Solutions - Ngmsoft</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Solutions Page Specific Styles */
+      body {
+        padding-top: 0;
+      }
+
+      .navbar {
+        left: 0 !important;
+        width: 100% !important;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding-top: 0 !important;
+      }
+
+      .solutions-hero {
+        position: relative;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow: hidden;
+        margin-bottom: 5rem;
+        margin-top: 0;
+        padding-top: 80px;
+      }
+
+      .solutions-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(102, 126, 234, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(118, 75, 162, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 20%,
+            rgba(139, 92, 246, 0.2) 0%,
+            transparent 40%
+          );
+        animation: gradientShift 15s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+      }
+
+      .solutions-hero .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.95) 0%,
+          rgba(118, 75, 162, 0.95) 100%
+        );
+        z-index: 0;
+      }
+
+      .solutions-hero .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .solutions-hero .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+
+      .solutions-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 700;
+        color: white;
+        margin: 0 0 1.5rem 0;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .solutions-title .hero-highlight {
+        background: linear-gradient(to right, #ffffff, #e0e7ff, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .solutions-subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        color: rgba(255, 255, 255, 0.95);
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 2.5rem;
+        position: relative;
+        z-index: 1;
+        line-height: 1.8;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+      }
+
+      .stat-item {
+        text-align: center;
+        color: white;
+      }
+
+      .stat-number {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .stat-label {
+        font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+      }
+
+      /* Apps Grid Section */
+      .apps-grid-section {
+        padding: 4rem 0 6rem;
+        background: var(--bg-light);
+      }
+
+      .app-card {
+        position: relative;
+        background: var(--bg-white);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 3rem;
+        margin-bottom: 3rem;
+        transition: all 0.4s ease;
+        box-shadow: var(--shadow-md);
+      }
+
+      .app-card:hover {
+        transform: translateY(-8px);
+        border-color: #667eea;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+      }
+
+      .app-card.featured {
+        border: 2px solid #667eea;
+        background: linear-gradient(
+          to bottom,
+          rgba(102, 126, 234, 0.05),
+          var(--bg-white)
+        );
+      }
+
+      .featured-badge {
+        position: absolute;
+        top: -12px;
+        right: 3rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 6px 20px;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .app-card-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+      }
+
+      .app-icon svg {
+        color: white;
+      }
+
+      .app-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0 0 0.75rem 0;
+      }
+
+      .app-description {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Versions Grid */
+      .app-versions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        justify-items: center;
+        max-width: 100%;
+      }
+
+      .download-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        background: var(--bg-light);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        width: 100%;
+        max-width: 180px;
+      }
+
+      .download-card:hover {
+        background: rgba(102, 126, 234, 0.05);
+        border-color: #667eea;
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+      }
+
+      .download-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .download-card:hover .download-icon {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .download-icon svg {
+        color: white;
+      }
+
+      .version-name {
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .app-card {
+          padding: 2rem 1.5rem;
+        }
+
+        .app-versions-grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          gap: 1rem;
+        }
+
+        .download-card {
+          padding: 1rem;
+        }
+
+        .solutions-hero {
+          min-height: 50vh;
+        }
+
+        .hero-stats {
+          gap: 2rem;
+        }
+
+        .stat-item {
+          flex: 1 1 calc(33.33% - 2rem);
+          min-width: 100px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .app-versions-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <a href="index.html" style="text-decoration: none; color: inherit">
+            <span>Ngmsoft</span>
+          </a>
+        </div>
+        <ul class="navbar-menu">
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li><a href="index.html#about" class="navbar-link">About</a></li>
+          <li><a href="index.html#contact" class="navbar-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="solutions-hero">
+        <div class="hero-overlay"></div>
+        <div class="particles">
+          <span class="particle"></span>
+          <span class="particle"></span>
+          <span class="particle"></span>
+          <span class="particle"></span>
+          <span class="particle"></span>
+        </div>
+        <div class="container">
+          <h1 class="solutions-title">
+            <span class="hero-highlight">Our Solutions</span>
+          </h1>
+          <p class="solutions-subtitle">
+            Download our powerful applications tailored for your business needs.
+            Professional tools designed to enhance productivity and efficiency.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">16+</span>
+              <span class="stat-label">Applications</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label">Product Lines</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Reliable</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Apps Grid Section -->
+      <section class="apps-grid-section">
+        <div class="container">
+          <!-- NGM App Card -->
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+              </div>
+              <h2 class="app-title">NGM App</h2>
+              <p class="app-description">
+                Enterprise-grade mobile charging solution with multi-device
+                support
+              </p>
+            </div>
+            <div class="app-versions-grid">
+              <a
+                href="http://www.ngmsoft.com/ets/NgmCharge420E173/NgmCharge.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">E173</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/ets/NgmCharge22ZTE626/NgmCharge.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">ZTE 2</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/ets/NgmCharge570ZTE626/NgmCharge.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">ZTE 5</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/ets/NgmCharge600ZTE626/NgmCharge.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">ZTE 6 plus</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/ets/ngmzte620bory/NgmCharge.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">ZTE 6.2 special</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- NGM Etisalat Card -->
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <path d="M12 18h.01"></path>
+                </svg>
+              </div>
+              <h2 class="app-title">NGM Etisalat</h2>
+              <p class="app-description">
+                Specialized solution for Etisalat network devices
+              </p>
+            </div>
+            <div class="app-versions-grid">
+              <a
+                href="http://www.ngmsoft.com/ets/iChargeE5.00E173.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">E173</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/ets/iChargeE5.00ZTE626.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">ZTE</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- NGM Vodafon Card -->
+          <div class="app-card">
+            <div class="app-card-header">
+              <div class="app-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="app-title">NGM Vodafon</h2>
+              <p class="app-description">
+                Optimized for Vodafone network infrastructure
+              </p>
+            </div>
+            <div class="app-versions-grid">
+              <a
+                href="http://www.ngmsoft.com/out/iChargeV5.00k3770.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">K3770</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/out/iChargeV5.00Mf626.exe"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">MF626</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- TG 5 Card -->
+          <div class="app-card featured">
+            <div class="featured-badge">Popular</div>
+            <div class="app-card-header">
+              <div class="app-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h2 class="app-title">TG 5</h2>
+              <p class="app-description">
+                Advanced management system with comprehensive features
+              </p>
+            </div>
+            <div class="app-versions-grid">
+              <a
+                href="http://www.ngmsoft.com/release/TgT5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGT</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgS5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGS</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgD5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGD</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgmT5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGMT</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgmS5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGMS</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgmC5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGMC</span>
+              </a>
+              <a
+                href="http://www.ngmsoft.com/release/TgmD5.rar"
+                class="download-card"
+              >
+                <div class="download-icon">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                </div>
+                <span class="version-name">TGMD</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2025 Ngmsoft. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
