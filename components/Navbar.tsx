@@ -12,6 +12,7 @@ interface NavbarProps {
 
 export default function Navbar({ showSidebarToggle = true, onToggleSidebar, isSidebarCollapsed = false }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,23 @@ export default function Navbar({ showSidebarToggle = true, onToggleSidebar, isSi
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu when clicking outside or on a link
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+  // Close menu on window resize (when switching to desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -41,11 +59,30 @@ export default function Navbar({ showSidebarToggle = true, onToggleSidebar, isSi
         <Link href="/" className={styles.navbarLogo}>
           <span>Ngmsoft</span>
         </Link>
-        <ul className={styles.navbarMenu}>
-          <li><Link href="/" className={styles.navbarLink}>Home</Link></li>
-          <li><Link href="/#about" className={styles.navbarLink}>About</Link></li>
-          <li><Link href="/#contact" className={styles.navbarLink}>Contact</Link></li>
+
+        {/* Mobile Menu Toggle Button */}
+        <button
+          className={`${styles.mobileMenuBtn} ${mobileMenuOpen ? styles.active : ''}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className={styles.hamburgerLine}></span>
+          <span className={styles.hamburgerLine}></span>
+          <span className={styles.hamburgerLine}></span>
+        </button>
+
+        {/* Navigation Menu */}
+        <ul className={`${styles.navbarMenu} ${mobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+          <li><Link href="/" className={styles.navbarLink} onClick={closeMobileMenu}>Home</Link></li>
+          <li><Link href="/#about" className={styles.navbarLink} onClick={closeMobileMenu}>About</Link></li>
+          <li><Link href="/#contact" className={styles.navbarLink} onClick={closeMobileMenu}>Contact</Link></li>
         </ul>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className={styles.mobileMenuOverlay} onClick={closeMobileMenu}></div>
+        )}
       </div>
     </nav>
   );
