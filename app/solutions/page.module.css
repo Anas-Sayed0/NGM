@@ -1,0 +1,285 @@
+/* Solutions Page Styles */
+.mainContent {
+  margin-left: var(--sidebar-width);
+  margin-top: 80px;
+  min-height: 100vh;
+  transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When sidebar is collapsed, remove left margin */
+:global(body.sidebar-collapsed) .mainContent {
+  margin-left: 0;
+}
+
+/* Solutions Hero Section */
+.solutionsHero {
+  position: relative;
+  width: 100vw;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  overflow: hidden;
+  margin-left: calc(-1 * var(--sidebar-width, 0px));
+  margin-top: -80px;
+  padding-top: 80px;
+}
+
+/* When sidebar is collapsed, no negative margin needed */
+:global(body.sidebar-collapsed) .solutionsHero {
+  margin-left: 0;
+}
+
+/* Hyperspeed Background Layer */
+.hyperspeedBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hyperspeedBackground > div {
+  width: 100%;
+  height: 100%;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.solutionsTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.heroHighlight {
+  background: linear-gradient(
+    90deg,
+    #d856bf 0%,
+    #c247ac 50%,
+    #a855f7 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+.solutionsSubtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  margin: 0;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.heroStats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.statItem {
+  text-align: center;
+  color: white;
+}
+
+.statNumber {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #d856bf 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statLabel {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appsGridSection {
+  padding: 4rem 0 6rem;
+  background: var(--bg-dark);
+}
+
+.appCard {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.appCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary-color);
+  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+  background: var(--bg-card-hover);
+}
+
+.appCard.featured {
+  border: 2px solid var(--primary-color);
+  background: linear-gradient(to bottom, rgba(168, 85, 247, 0.1), var(--bg-card));
+}
+
+.featuredBadge {
+  position: absolute;
+  top: -12px;
+  right: 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.appCardHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.appIcon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+  color: white;
+}
+
+.appTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 0.75rem 0;
+}
+
+.appDescription {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.appVersionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.downloadCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  max-width: 180px;
+}
+
+.downloadCard:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--primary-color);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(168, 85, 247, 0.2);
+}
+
+.downloadIcon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.downloadCard:hover .downloadIcon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+}
+
+.versionName {
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .appCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .appVersionsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .solutionsHero {
+    min-height: 50vh;
+  }
+
+  .heroStats {
+    gap: 2rem;
+  }
+}

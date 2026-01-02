@@ -1,0 +1,285 @@
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-dark);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  z-index: 1000;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.collapsed {
+  transform: translateX(calc(-1 * var(--sidebar-width)));
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.sidebarHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.sidebarClose {
+  display: flex;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background var(--transition-speed) ease;
+}
+
+.sidebarClose:hover {
+  background: var(--bg-light);
+}
+
+.sidebarClose svg {
+  display: block;
+  color: var(--text-dark);
+}
+
+/* Sidebar Toggle Button */
+.sidebarToggleBtn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.sidebarToggleBtn:hover {
+  background: var(--bg-light);
+}
+
+.sidebarToggleBtn svg {
+  display: block;
+  color: var(--text-dark);
+  transition: all var(--transition-speed) ease;
+}
+
+.sidebarToggleBtn .iconClose {
+  display: none;
+}
+
+.sidebar.collapsed ~ * .sidebarToggleBtn .iconOpen {
+  display: block;
+}
+
+.sidebar.collapsed ~ * .sidebarToggleBtn .iconClose {
+  display: none;
+}
+
+.sidebar:not(.collapsed) ~ * .sidebarToggleBtn .iconOpen {
+  display: none;
+}
+
+.sidebar:not(.collapsed) ~ * .sidebarToggleBtn .iconClose {
+  display: block;
+}
+
+/* Sidebar Sections */
+.sidebarSection {
+  margin-bottom: 0.5rem;
+}
+
+.sectionToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.sectionToggle:hover {
+  background: var(--bg-light);
+  border-color: var(--primary-color);
+}
+
+.sectionToggle .icon {
+  flex-shrink: 0;
+  color: var(--primary-color);
+}
+
+.sectionToggle span {
+  flex: 1;
+  text-align: left;
+}
+
+.sectionToggle .chevron {
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-light);
+}
+
+.sectionToggle.active .chevron {
+  transform: rotate(180deg);
+}
+
+.sectionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 0.5rem;
+}
+
+.sectionContent.active {
+  max-height: 1000px;
+  padding: 0.5rem 0.5rem 0;
+}
+
+/* App Items */
+.appItem {
+  margin-bottom: 0.5rem;
+}
+
+.appToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 0.875rem;
+  background: var(--bg-light);
+  border: 1px solid transparent;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.appToggle:hover {
+  background: var(--bg-white);
+  border-color: var(--border-color);
+}
+
+.appToggle .iconSmall {
+  flex-shrink: 0;
+  color: var(--text-light);
+}
+
+.appToggle span {
+  flex: 1;
+  text-align: left;
+}
+
+.appToggle .chevronSmall {
+  flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-light);
+}
+
+.appToggle.active .chevronSmall {
+  transform: rotate(180deg);
+}
+
+.appVersions {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.appVersions.active {
+  max-height: 500px;
+  padding-top: 0.5rem;
+}
+
+.versionLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  margin-bottom: 0.25rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.875rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.versionLink:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+.versionLink svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* Resource Links */
+.resourceLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.625rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+}
+
+.resourceLink:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateX(4px);
+}
+
+.resourceLink svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
